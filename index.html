@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="OtakuWave — Radio Anime Online 24/7. La primera radio anime donde tú decides lo que suena.">
+  <meta property="og:title" content="OtakuWave · Radio Anime Online">
+  <meta property="og:description" content="Donde el anime suena sin parar.">
+  <meta property="og:image" content="assets/images/banner_main.jpg">
+  
+ <!-- Favicon - Logo OtakuWave -->
+<link rel="icon" type="image/png" sizes="96x96" href="assets/images/logo-favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/images/logo-favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo-favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-favicon.png">
+<link rel="shortcut icon" href="assets/images/logo-favicon.png" type="image/png">
+  
+  <title>OtakuWave · Radio Anime Online</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAV
+════════════════════════════════════ -->
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <img src="assets/images/logo_horizontal.png" alt="OtakuWave" class="nav-brand-logo blend-screen" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 200 50%27%3E%3Ctext y=%2735%27 font-size=%2724%27 fill=%27%23FF4D8D%27%3E🎌 OtakuWave%3C/text%3E%3C/svg%3E'">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#reproductor">Radio</a></li>
+    <li><a href="#personajes">Personajes</a></li>
+    <li><a href="#programacion">Programación</a></li>
+    <li><a href="#secciones">Secciones</a></li>
+    <li><a href="#comunidad">Comunidad</a></li>
+    <li><a href="#zona-fan">Zona Fan</a></li>
+  </ul>
+  <div class="nav-live">
+    <span class="live-dot"></span>
+    En vivo ahora
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <p class="hero-eyebrow anim-1">Radio Anime Online · 24/7</p>
+
+  <h1 class="hero-title anim-2">
+    <span class="line-pink">Donde el anime</span>
+    <span class="line-white">suena</span>
+    <span class="line-blue">sin parar.</span>
+  </h1>
+
+  <p class="hero-sub anim-3">
+    La primera radio anime donde tú decides lo que suena.
+    Vota, escucha y sé parte del universo OtakuWave.
+  </p>
+
+  <div class="hero-cta anim-4">
+    <a href="#reproductor" class="btn-primary">Escuchar ahora</a>
+    <a href="#comunidad" class="btn-ghost">Unirme a la comunidad</a>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════
+     REPRODUCTOR Y STREAM (visible desde inicio)
+════════════════════════════════════ -->
+<section id="reproductor" class="player-section-full">
+  <div class="section-inner" style="padding-top: 2rem; padding-bottom: 2rem;">
+    
+    <!-- Título de la sección -->
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+      <p class="label-tag">🎵 Escucha ahora</p>
+      <h2 class="section-title display" style="font-size: clamp(1.4rem, 4vw, 1.8rem);">Radio en vivo</h2>
+    </div>
+
+    <!-- Reproductor MP3 (COMPLETO) -->
+    <div class="player-compact" id="mp3PlayerWrap">
+      <div class="player">
+        <div class="player-header">
+          <div class="player-art" id="playerArt">
+            <img src="assets/images/avatar_hikari.png" alt="Hikari" id="playerArtImg">
+          </div>
+          <div class="player-meta">
+            <div class="player-section" id="playerSection">Anime Hits</div>
+            <div class="player-track" id="playerTrack">Gurenge — LiSA</div>
+            <div class="player-anime" id="playerAnime">Kimetsu no Yaiba</div>
+          </div>
+          <div class="player-vol">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" opacity=".7"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+            <input type="range" min="0" max="100" value="75" id="volSlider" aria-label="Volumen">
+          </div>
+        </div>
+
+        <div class="waveform" id="waveform"></div>
+
+        <div class="progress-row">
+          <span class="time" id="timeElapsed">0:00</span>
+          <div class="progress-track" onclick="seekTo(event)">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="time" id="timeDuration">4:51</span>
+        </div>
+
+        <div class="controls">
+          <div class="ctrl-secondary">
+            <button class="ctrl-btn" id="btnShuffle" onclick="toggleShuffle()" title="Shuffle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 3 21 3 21 8"/>
+                <line x1="4" y1="20" x2="21" y2="3"/>
+                <polyline points="21 16 21 21 16 21"/>
+                <line x1="15" y1="15" x2="21" y2="21"/>
+              </svg>
+            </button>
+            <button class="ctrl-btn" id="btnRepeat" onclick="toggleRepeat()" title="Repetir">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="17 1 21 5 17 9"/>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                <polyline points="7 23 3 19 7 15"/>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="ctrl-main">
+            <button class="btn-prev" onclick="prevTrack()" title="Anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="19 20 9 12 19 4 19 20" fill="currentColor" opacity=".7"/>
+                <line x1="5" y1="19" x2="5" y2="5"/>
+              </svg>
+            </button>
+            <button class="btn-play" id="btnPlay" onclick="togglePlay()" title="Play">
+              <svg id="playIcon" viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </button>
+            <button class="btn-next" onclick="nextTrack()" title="Siguiente">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 4 15 12 5 20 5 4" fill="currentColor" opacity=".7"/>
+                <line x1="19" y1="5" x2="19" y2="19"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            MP3
+          </div>
+
+          <!-- Botón para cambiar a YouTube Video -->
+          <button class="btn-mode" id="toggleModeBtn" onclick="togglePlaybackMode()" title="Cambiar a Video Destacado">
+            🎬 VIDEO
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Destacado - Demon Slayer (SIEMPRE VISIBLE) -->
+    <div class="youtube-stream-wrapper" id="youtubeLiveContainer">
+      <div class="youtube-stream-header">
+        <span class="live-badge-stream">🔥 VIDEO DESTACADO</span>
+        <span class="youtube-stream-title">Gurenge - Demon Slayer: Kimetsu no Yaiba OP (161M+ views)</span>
+      </div>
+      <div class="youtube-stream-container">
+        <iframe 
+          width="100%" 
+          height="280" 
+          src="https://www.youtube-nocookie.com/embed/pmanD_s7G3U?rel=0"
+          title="Gurenge - Demon Slayer: Kimetsu no Yaiba Opening"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="border-radius: 12px;">
+        </iframe>
+      </div>
+      <p class="youtube-stream-note">
+        🎵 Opening oficial de Demon Slayer: Kimetsu no Yaiba • Gurenge por LiSA • +161M de reproducciones
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════════════════════════════
+     TICKER
+════════════════════════════════════ -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     BANNER PRINCIPAL
+════════════════════════════════════ -->
+<section class="banner-section">
+  <div class="banner-img-wrap">
+    <img src="assets/images/banner_main.jpg" alt="OtakuWave" class="banner-img" loading="lazy" onerror="this.style.display='none'">
+    <div class="banner-overlay">
+      <div class="banner-content">
+        <p class="banner-eyebrow">Radio · Comunidad · Cultura</p>
+        <h2 class="banner-title display">La frecuencia<br>que buscabas.</h2>
+        <p class="banner-sub">Openings, endings, debates y una comunidad que decide lo que suena cada día.</p>
+        <a href="#comunidad" class="btn-primary">Únete ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PERSONAJES
+════════════════════════════════════ -->
+<section id="personajes">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">Los guardianes de la frecuencia</p>
+      <h2 class="section-title display">Akira e Hikari</h2>
+      <p class="section-sub">No son presentadores. Son los protagonistas de un universo que la comunidad co-escribe cada semana.</p>
+    </header>
+
+    <div class="chars-grid">
+      <article class="char-card hikari-ch">
+        <div class="char-card-bar"></div>
+        <div class="char-img-area">
+          <div class="char-img-bg hikari-bg"></div>
+          <img src="assets/images/banner_hikari.jpg" alt="Hikari" class="char-banner-img" loading="lazy">
+        </div>
+        <div class="char-body">
+          <div class="char-role">Locutora · Shojo Heart · Voz de la frecuencia</div>
+          <div class="char-name pink">Hikari</div>
+          <p class="char-bio">Sabía que la estación existía antes de conocer a Akira. Llegó primero — lo estaba esperando sin saberlo. Serena pero con opiniones firmes.</p>
+          <div class="char-tags">
+            <span class="tag pink">Romance anime</span>
+            <span class="tag pink">Lore hunter</span>
+            <span class="tag pink">Endings que lloran</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="char-card akira-ch">
+        <div class="char-card-bar"></div>
+        <div class="char-img-area">
+          <div class="char-img-bg akira-bg"></div>
+          <img src="assets/images/banner_akira.jpg" alt="Akira" class="char-banner-img" loading="lazy">
+        </div>
+        <div class="char-body">
+          <div class="char-role">Locutor · Shonen Soul · DJ del caos</div>
+          <div class="char-name purple">Akira</div>
+          <p class="char-bio">Coleccionista de openings desde los 12 años. Encontró la frecuencia de madrugada siguiendo una señal que no debía existir.</p>
+          <div class="char-tags">
+            <span class="tag purple">Shonen</span>
+            <span class="tag purple">Debates épicos</span>
+            <span class="tag blue">Opening hunter</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     INTRO VIDEOS
+════════════════════════════════════ -->
+<section id="intro" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">Conócelos en acción</p>
+      <h2 class="section-title display">Los protagonistas</h2>
+      <p class="section-sub">Mira los intros de Akira e Hikari — los guardianes que transmiten la frecuencia 24/7.</p>
+    </header>
+
+    <div class="intro-grid">
+      <div class="intro-card hikari-card">
+        <div class="intro-video-wrap">
+          <video src="assets/video/intro_hikari.mp4" preload="metadata" playsinline></video>
+          <div class="intro-play-overlay">
+            <div class="intro-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="intro-card-body">
+          <div class="intro-char-name pink">Hikari</div>
+          <div class="intro-char-role">Locutora · Voz de la frecuencia</div>
+        </div>
+      </div>
+
+      <div class="intro-card akira-card">
+        <div class="intro-video-wrap">
+          <video src="assets/video/intro_akira.mp4" preload="metadata" playsinline></video>
+          <div class="intro-play-overlay">
+            <div class="intro-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="intro-card-body">
+          <div class="intro-char-name purple">Akira</div>
+          <div class="intro-char-role">Locutor · DJ del caos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PROGRAMACIÓN
+════════════════════════════════════ -->
+<section id="programacion">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">Horario</p>
+      <h2 class="section-title display">Programación</h2>
+      <p class="section-sub">Cada franja tiene su propio universo sonoro.</p>
+    </header>
+
+    <div class="schedule-grid">
+      <div class="sched-card"><div class="sched-time">06:00 — 12:00</div><div class="sched-name">Morning Wave</div><p class="sched-desc">Openings energéticos y J-pop para arrancar el día.</p></div>
+      <div class="sched-card"><div class="sched-time">12:00 — 18:00</div><div class="sched-name">Tarde Otaku</div><p class="sched-desc">Noticias, Otaku News, La Frecuencia Decide.</p></div>
+      <div class="sched-card"><div class="sched-time">18:00 — 22:00</div><div class="sched-name">Prime Time</div><p class="sched-desc">El Tribunal Otaku, Batalla Anime.</p></div>
+      <div class="sched-card"><div class="sched-time">22:00 — 00:00</div><div class="sched-name">Señal Perdida</div><p class="sched-desc">Openings y endings con historia oscura.</p></div>
+      <div class="sched-card"><div class="sched-time">00:00 — 06:00</div><div class="sched-name">Lo-Fi Anime Mode</div><p class="sched-desc">Lo-fi, endings suaves e instrumentales.</p></div>
+      <div class="sched-card featured"><div class="sched-time">Viernes 20:00</div><div class="sched-name text-pink">En vivo especial</div><p class="sched-desc">Transmisión semanal en vivo. La comunidad elige el tema.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     SECCIONES
+════════════════════════════════════ -->
+<section id="secciones" style="background:rgba(123,44,191,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">El universo OtakuWave</p>
+      <h2 class="section-title display">Secciones</h2>
+      <p class="section-sub">Cada sección es un formato con mecánica de engagement propia.</p>
+    </header>
+
+    <div class="sections-grid">
+      <div class="section-card"><div class="sc-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="#9D4EDD"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="sc-name">Anime Hits</div><p class="sc-desc">Openings y endings icónicos elegidos por la comunidad.</p></div>
+      <div class="section-card"><div class="sc-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="#00CFFF"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></div><div class="sc-name">Otaku News</div><p class="sc-desc">Noticias del mundo anime filtradas por Akira e Hikari.</p></div>
+      <div class="section-card"><div class="sc-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="#FF4D8D"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="sc-name">Zona Fan</div><p class="sc-desc">Los mensajes y creaciones de la comunidad se vuelven parte del aire.</p></div>
+      <div class="section-card"><div class="sc-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="#EF9F27"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="sc-name">Batalla Anime</div><p class="sc-desc">El debate otaku más épico de la semana.</p></div>
+      <div class="section-card"><div class="sc-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="#1D9E75"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="sc-name">Momento Kawaii</div><p class="sc-desc">Endings románticos, slice of life y el espacio donde Hikari manda.</p></div>
+      <div class="section-card"><div class="sc-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="#639922"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M10 13l-2-2 2-2"/><path d="M14 13l2-2-2-2"/></svg></div><div class="sc-name">Gaming Zone</div><p class="sc-desc">Soundtracks anime-gaming, noticias y el cruce entre dos universos.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     LA FRECUENCIA DECIDE
+════════════════════════════════════ -->
+<section id="frecuencia">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">Formato propio</p>
+      <h2 class="section-title display">La Frecuencia Decide</h2>
+      <p class="section-sub">Tu voto tiene consecuencias reales. El resultado cambia la programación de mañana.</p>
+    </header>
+
+    <div class="vote-card">
+      <div class="vote-question">Esta semana: ¿Cuál abre el Prime Time del viernes?</div>
+      <div class="vote-sub">Akira vota Demon Slayer. Hikari insiste en Attack on Titan. Tú decides.</div>
+      <div class="vote-options">
+        <div class="vote-option" id="opt0" onclick="vote(0)">
+          <span class="vote-option-text">Gurenge — Kimetsu no Yaiba</span>
+          <div class="vote-right">
+            <div class="vote-bar-wrap"><div class="vote-bar" id="bar0" style="width:58%"></div></div>
+            <span class="vote-pct" id="pct0">58%</span>
+          </div>
+        </div>
+        <div class="vote-option" id="opt1" onclick="vote(1)">
+          <span class="vote-option-text">Guren no Yumiya — Attack on Titan</span>
+          <div class="vote-right">
+            <div class="vote-bar-wrap"><div class="vote-bar" id="bar1" style="width:42%"></div></div>
+            <span class="vote-pct" id="pct1">42%</span>
+          </div>
+        </div>
+      </div>
+      <div class="vote-footer">
+        <span class="vote-pulse"></span>
+        <span id="voteTimer">Cierra en 14h 32m — 2,847 votos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     COMUNIDAD
+════════════════════════════════════ -->
+<section id="comunidad">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">Niveles de la frecuencia</p>
+      <h2 class="section-title display">La comunidad</h2>
+      <p class="section-sub">No escuchas OtakuWave — la construyes. Cada participación sube tu nivel en la frecuencia.</p>
+    </header>
+
+    <div class="community-grid">
+      <!-- Tarjeta izquierda: Sistema de niveles -->
+      <div class="comm-card">
+        <div class="comm-label">Sistema de niveles</div>
+        <div class="comm-title">Tu rango en la frecuencia</div>
+        <p class="comm-body">Avanzas según participación, no según lo que pagas. Votar, comentar, sugerir canciones y participar en decisiones narrativas de Akira e Hikari suma nivel.</p>
+        <div class="levels">
+          <div class="level-row">
+            <div class="level-dot" style="background:#555"></div>
+            <span class="level-name">Sintonizador</span>
+            <span class="level-desc">Nuevo oyente. Escucha y vota.</span>
+          </div>
+          <div class="level-row">
+            <div class="level-dot" style="background:var(--blue)"></div>
+            <span class="level-name">Oyente Neko</span>
+            <span class="level-desc">Sugiere canciones, participa en polls.</span>
+          </div>
+          <div class="level-row">
+            <div class="level-dot" style="background:var(--purple-light)"></div>
+            <span class="level-name">Guardián Otaku</span>
+            <span class="level-desc">Vota decisiones del lore de Akira/Hikari.</span>
+          </div>
+          <div class="level-row">
+            <div class="level-dot" style="background:var(--pink)"></div>
+            <span class="level-name">Maestro de Onda</span>
+            <span class="level-desc">Co-presenta un segmento al mes en vivo.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta derecha: Canales de la comunidad -->
+      <div class="comm-card">
+        <div class="comm-label">Canales de la comunidad</div>
+        <div class="comm-title">Conéctate a la frecuencia</div>
+        <p class="comm-body">Cada plataforma tiene un rol específico en el ecosistema OtakuWave. No son copias del mismo contenido.</p>
+        <div class="social-rows">
+          <!-- Instagram -->
+          <div class="social-row">
+            <div class="social-icon" style="background:rgba(225,48,108,.15)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <circle cx="16" cy="8" r="1.5" fill="#E1306C" stroke="none"></circle>
+                <circle cx="12" cy="12" r="4" stroke="#E1306C"></circle>
+              </svg>
+            </div>
+            <span class="social-name">Instagram</span>
+            <span class="social-desc">Contenido visual y branding</span>
+          </div>
+          
+          <!-- TikTok -->
+          <div class="social-row">
+            <div class="social-icon" style="background:rgba(255,255,255,.07)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text)">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+              </svg>
+            </div>
+            <span class="social-name">TikTok</span>
+            <span class="social-desc">Formatos virales y El Tribunal</span>
+          </div>
+          
+          <!-- Discord -->
+          <div class="social-row">
+            <div class="social-icon" style="background:rgba(88,101,242,.15)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#5865F2">
+                <path d="M20.317 4.37a19.73 19.73 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.68 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+            </div>
+            <span class="social-name">Discord</span>
+            <span class="social-desc">Comunidad en vivo y eventos</span>
+          </div>
+          
+          <!-- YouTube -->
+          <div class="social-row">
+            <div class="social-icon" style="background:rgba(255,0,0,.12)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.95C18.88 4 12 4 12 4s-6.88 0-8.6.47a2.78 2.78 0 0 0-1.94 1.95A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.53C5.12 20 12 20 12 20s6.88 0 8.6-.47a2.78 2.78 0 0 0 1.94-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+              </svg>
+            </div>
+            <span class="social-name">YouTube</span>
+            <span class="social-desc">Series y transmisiones en vivo</span>
+          </div>
+          
+          <!-- WhatsApp -->
+          <div class="social-row">
+            <div class="social-icon" style="background:rgba(37,211,102,.12)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+              </svg>
+            </div>
+            <span class="social-name">WhatsApp</span>
+            <span class="social-desc">Canal off the record de Akira e Hikari</span>
+          </div>
+        </div>
+        <a href="#" class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;" onclick="alert('¡Próximamente! La comunidad abre con el lanzamiento.');return false;">
+          Unirme ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ZONA FAN - MURO DE MENSAJES
+════════════════════════════════════ -->
+<section id="zona-fan" style="background: var(--card2);">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="label-tag">La comunidad habla</p>
+      <h2 class="section-title display">Zona Fan</h2>
+      <p class="section-sub">Los mensajes y creaciones de la comunidad se vuelven parte del aire.</p>
+    </header>
+
+    <div class="fan-wall">
+      <div class="fan-form">
+        <input type="text" id="fanName" placeholder="Tu nombre (opcional)" maxlength="30">
+        <textarea id="fanMessage" rows="2" placeholder="Escribe tu mensaje para la comunidad..." maxlength="200"></textarea>
+        <button onclick="postFanMessage()" class="btn-primary">Enviar mensaje 💬</button>
+      </div>
+      <div class="fan-messages" id="fanMessages">
+        <div class="fan-message system">✨ ¡Bienvenido a la Zona Fan! Deja tu mensaje.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CONTACTO NEWSLETTER
+════════════════════════════════════ -->
+<section id="contacto" style="background: linear-gradient(135deg, rgba(123,44,191,0.1), rgba(255,77,141,0.05));">
+  <div class="section-inner" style="text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <p class="label-tag">📬 Mantente en sintonía</p>
+      <h2 class="section-title display" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">
+        ¿Quieres más contenido exclusivo?
+      </h2>
+      <p class="section-sub" style="margin-bottom: 2rem;">
+        Recibe openings, noticias y sorpresas directamente en tu correo
+      </p>
+      
+      <form id="contactForm" style="display: flex; flex-direction: column; gap: 12px; max-width: 450px; margin: 0 auto;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <input type="text" id="contactName" placeholder="Tu nombre" required 
+            style="flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(123,44,191,0.3); border-radius: 8px; padding: 12px; color: white;">
+          <input type="email" id="contactEmail" placeholder="tu@email.com" required 
+            style="flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(123,44,191,0.3); border-radius: 8px; padding: 12px; color: white;">
+        </div>
+        <textarea id="contactMessage" rows="3" placeholder="¿Qué te gustaría escuchar o saber?" 
+          style="background: rgba(255,255,255,0.08); border: 1px solid rgba(123,44,191,0.3); border-radius: 8px; padding: 12px; color: white; resize: vertical;"></textarea>
+        <button type="submit" class="btn-primary" style="width: 100%;">✉️ Enviar mensaje</button>
+        <p id="formStatus" style="font-size: 0.75rem; color: var(--muted); margin-top: 8px;"></p>
+      </form>
+      
+      <div style="margin-top: 2rem; display: flex; gap: 20px; justify-content: center;">
+        <a href="mailto:hola@otakuwave.xyz" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">📧 hola@otakuwave.xyz</a>
+        <span style="color: var(--border);">|</span>
+        <a href="#" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;" onclick="showContactAlert(); return false;">💬 Soporte rápido</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/images/logo_horizontal.png" alt="OtakuWave" class="footer-logo blend-screen" loading="lazy" onerror="this.style.display='none'">
+      <span style="font-family:'Orbitron';font-size:0.8rem;">OtakuWave</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Sobre nosotros</a>
+      <a href="#">Contacto</a>
+      <a href="#">Términos</a>
+      <a href="#">Privacidad</a>
+    </div>
+    <span class="footer-copy">© 2025 OtakuWave · Radio Anime Online</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+</body>
+</html>
