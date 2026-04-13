@@ -6,16 +6,9 @@
    PLAYLIST (TUS 10 MP3s)
 ────────────────────────────────────── */
 const TRACKS = [
-  { section: 'Audio Club', track: 'Club Edyn', anime: 'Night Sessions', art: 'hikari', file: 'assets/audio/0002_audio_club_edyn.mp3' },
-  { section: 'Momento Kawaii', track: 'Kawaii Dance Upbeat', anime: 'Japan Anime', art: 'akira', file: 'assets/audio/003_fassounds_kawaii_dance_upbeat_japan.mp3' },
-  { section: 'Batalla Anime', track: 'Final Ye Mera Flow', anime: 'Urban Beats', art: 'hikari', file: 'assets/audio/004_final_ye_mera_flow.mp3' },
-  { section: 'Morning Wave', track: 'From Now On', anime: 'Epic Journey', art: 'akira', file: 'assets/audio/005_From_Now_On.mp3' },
-  { section: 'Señal Perdida', track: 'Cyberpunk Anime', anime: 'Future Beats', art: 'hikari', file: 'assets/audio/006_hitslab_anime_anime_cyberpunk.mp3' },
-  { section: 'Anime Hits', track: 'Gurenge — LiSA', anime: 'Kimetsu no Yaiba', art: 'akira', file: 'assets/audio/LiSA - 007_Kimetsu_no_Yaiba.mp3' },
-  { section: 'Zona Fan', track: 'Siab Mob Heev', anime: 'Kristine Xiong', art: 'hikari', file: 'assets/audio/008_Kristine_Xiong_Siab_Mob_Heev.mp3' },
-  { section: 'Phantastic Beats', track: 'Anime Beginnings', anime: 'Intro Mix', art: 'akira', file: 'assets/audio/009_phantasticbeats.mp3' },
-  { section: 'Phantastic Beats', track: 'Anime Wave', anime: 'Second Wave', art: 'hikari', file: 'assets/audio/010_phantasticbeats_anime.mp3' },
   { section: 'Gaming Zone', track: 'Rocking the Anime', anime: 'Astronaut Beats', art: 'akira', file: 'assets/audio/0001_astronaut12_rocking.mp3' },
+  { section: 'Audio Club', track: 'Club Edyn', anime: 'Night Sessions', art: 'hikari', file: 'assets/audio/0002_audio_club_edyn.mp3' },
+];
 ];
 
 /* ──────────────────────────────────────
