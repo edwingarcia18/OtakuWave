@@ -9,7 +9,6 @@ const TRACKS = [
   { section: 'Gaming Zone', track: 'Rocking the Anime', anime: 'Astronaut Beats', art: 'akira', file: 'assets/audio/0001_astronaut12_rocking.mp3' },
   { section: 'Audio Club', track: 'Club Edyn', anime: 'Night Sessions', art: 'hikari', file: 'assets/audio/0002_audio_club_edyn.mp3' },
 ];
-];
 
 /* ──────────────────────────────────────
    STATE
